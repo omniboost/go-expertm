@@ -6,6 +6,6 @@ type Import struct {
 	XMLName xml.Name `xml:"ImportExpMPlus"`
 	// XmlNS   string   `xml:"xmlns:prefix,attr"`
 
-	Sales     Sales     `xml:"Sales"`
-	Customers Customers `xml:"Customers"`
+	Sales     Sales     `xml:"Sales>Sale"`
+	Customers Customers `xml:"Customers>Customer"`
 }

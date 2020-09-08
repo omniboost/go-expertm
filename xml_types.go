@@ -9,8 +9,8 @@ import (
 )
 
 var (
-	SideDebet  Side = "1"
-	SideCredit Side = "-1"
+	SideDebet  Side = 1
+	SideCredit Side = -1
 )
 
 type Date struct {
@@ -72,6 +72,34 @@ func (d *Date) UnmarshalXML(dec *xml.Decoder, start xml.StartElement) error {
 	return nil
 }
 
+func (d *Date) UnmarshalJSON(data []byte) (err error) {
+	var value string
+	err = json.Unmarshal(data, &value)
+	if err != nil {
+		return err
+	}
+
+	if value == "" {
+		return nil
+	}
+
+	// first try standard date
+	d.Time, err = time.Parse(time.RFC3339, value)
+	if err == nil {
+		return nil
+	}
+
+	// try iso8601 date format
+	d.Time, err = time.Parse("2006-01-02", value)
+	if err == nil {
+		return nil
+	}
+
+	layout := "02/01/2006"
+	d.Time, err = time.Parse(layout, value)
+	return err
+}
+
 type Month struct {
 	time.Time
 	Layout string
@@ -131,6 +159,34 @@ func (m *Month) UnmarshalXML(dec *xml.Decoder, start xml.StartElement) error {
 	return nil
 }
 
+func (m *Month) UnmarshalJSON(data []byte) (err error) {
+	var value string
+	err = json.Unmarshal(data, &value)
+	if err != nil {
+		return err
+	}
+
+	if value == "" {
+		return nil
+	}
+
+	// first try standard date
+	m.Time, err = time.Parse(time.RFC3339, value)
+	if err == nil {
+		return nil
+	}
+
+	// try iso8601 date format
+	m.Time, err = time.Parse("2006-01-02", value)
+	if err == nil {
+		return nil
+	}
+
+	layout := "200601"
+	m.Time, err = time.Parse(layout, value)
+	return err
+}
+
 type Decimal float64
 
 func (d Decimal) String() string {
@@ -152,4 +208,4 @@ func (d Decimal) MarshalText() ([]byte, error) {
 	return []byte(s), nil
 }
 
-type Side string
+type Side int

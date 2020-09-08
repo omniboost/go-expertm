@@ -7,7 +7,7 @@ type Sale struct {
 	CustomerPrime    int          `xml:"Customer_Prime"`             // Klant
 	CurrencyCode     string       `xml:"CurrencyCode"`               // Munt
 	DocType          int          `xml:"DocType`                     // Document
-	DocNumber        int          `xml:"DocNumber"`                  // Documentnummer
+	DocNumber        string       `xml:"DocNumber"`                  // Documentnummer
 	DocDate          Date         `xml:"DocDate,omitempty"`          // Datum
 	DueDate          Date         `xml:"DueDate,omitempty"`          // Vervaldatum
 	OurRef           string       `xml:"OurRef,omitempty"`           // Onze referte
@@ -17,7 +17,7 @@ type Sale struct {
 	AccountingPeriod string       `xml:"AccountingPeriod,omitempty"` // Boekhoudperiode
 	VATMonth         Month        `xml:"VATMonth,omitempty"`         // Btw-periode
 	YearAlfa         int          `xml:"Year_Alfa,omitempty"`        // Jaar
-	Ventil           string       `xml:"Ventil,omitempty"`           // Ventilatie
+	Ventil           int          `xml:"Ventil,omitempty"`           // Ventilatie
 	VATAmount        Decimal      `xml:"VATAmount,omitempty"`        // Btw-bedrag
 	Status           int          `xml:"Status"`                     // Status
 	Rate             string       `xml:"Rate,omitempty"`             // Koers
@@ -27,7 +27,7 @@ type Sale struct {
 	DelivDate        string       `xml:"DelivDate,omitempty"`        // Leverdatum
 	DatePayed        string       `xml:"DatePayed"`                  // Datum betaald
 	PayDate          Date         `xml:"PayDate,omitempty"`          // Kassa betaaldatum
-	Details          SalesDetails `xml:"Details"`
+	Details          SalesDetails `xml:"Details>Detail"`
 }
 
 type SalesDetails []SalesDetail
@@ -36,7 +36,7 @@ type SalesDetail struct {
 	Account     int     `xml:"Account"`               // Grootboekrekening
 	Amount      Decimal `xml:"Amount"`                // Bedrag
 	DebCre      Side    `xml:"DebCre"`                // D/C
-	Ventil      string  `xml:"Ventil"`                // Ventilatie
+	Ventil      int     `xml:"Ventil"`                // Ventilatie
 	Ref         string  `xml:"Ref,omitempty"`         // Referte
 	Unit1       string  `xml:"Unit1,omitempty"`       // Eenheid 1
 	Unit2       string  `xml:"Unit2,omitempty"`       // Eenheid 2
