@@ -69,7 +69,7 @@ func (d *Date) UnmarshalXML(dec *xml.Decoder, start xml.StartElement) error {
 		return err
 	}
 
-	return nil
+	return err
 }
 
 func (d *Date) UnmarshalJSON(data []byte) (err error) {
@@ -84,19 +84,23 @@ func (d *Date) UnmarshalJSON(data []byte) (err error) {
 	}
 
 	// first try standard date
-	d.Time, err = time.Parse(time.RFC3339, value)
+	layout := time.RFC3339
+	d.Time, err = time.Parse(layout, value)
 	if err == nil {
 		return nil
 	}
 
 	// try iso8601 date format
-	d.Time, err = time.Parse("2006-01-02", value)
+	layout = "2006-01-02"
+	d.Time, err = time.Parse(layout, value)
 	if err == nil {
+		d.Layout = layout
 		return nil
 	}
 
-	layout := "02/01/2006"
+	layout = "02/01/2006"
 	d.Time, err = time.Parse(layout, value)
+	d.Layout = layout
 	return err
 }
 
@@ -171,19 +175,24 @@ func (m *Month) UnmarshalJSON(data []byte) (err error) {
 	}
 
 	// first try standard date
-	m.Time, err = time.Parse(time.RFC3339, value)
+	layout := time.RFC3339
+	m.Time, err = time.Parse(layout, value)
 	if err == nil {
+		m.Layout = layout
 		return nil
 	}
 
 	// try iso8601 date format
-	m.Time, err = time.Parse("2006-01-02", value)
+	layout = "2006-01-02"
+	m.Time, err = time.Parse(layout, value)
 	if err == nil {
+		m.Layout = layout
 		return nil
 	}
 
-	layout := "200601"
+	layout = "200601"
 	m.Time, err = time.Parse(layout, value)
+	m.Layout = layout
 	return err
 }
 
