@@ -3,7 +3,7 @@ package expertm
 type Sales []Sale
 
 type Sale struct {
-	JournalPrime     int          `xml:"JournalPrime,omitempty"`     // Dagboek
+	JournalPrime     int          `xml:"Journal_Prime,omitempty"`    // Dagboek
 	CustomerPrime    int          `xml:"Customer_Prime"`             // Klant
 	CurrencyCode     string       `xml:"CurrencyCode"`               // Munt
 	DocType          int          `xml:"DocType`                     // Document
