@@ -3,7 +3,7 @@ package expertm
 type Sundries []Sundry
 
 type Sundry struct {
-	JournalPrime string        `xml:"Journal_Prime"`
+	JournalPrime int           `xml:"Journal_Prime"`
 	DocNumber    string        `xml:"DocNumber"`
 	DocDate      Date          `xml:"DocDate"`
 	Status       int           `xml:"Status"`
