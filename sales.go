@@ -36,7 +36,7 @@ type SalesDetail struct {
 	Account     int     `xml:"Account"`               // Grootboekrekening
 	Amount      Decimal `xml:"Amount"`                // Bedrag
 	DebCre      Side    `xml:"DebCre"`                // D/C
-	Ventil      int     `xml:"Ventil"`                // Ventilatie
+	Ventil      int     `xml:"Ventil,omitempty"`      // Ventilatie
 	Ref         string  `xml:"Ref,omitempty"`         // Referte
 	Unit1       string  `xml:"Unit1,omitempty"`       // Eenheid 1
 	Unit2       string  `xml:"Unit2,omitempty"`       // Eenheid 2
