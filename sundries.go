@@ -13,7 +13,7 @@ type Sundry struct {
 type SundryDetails []SundryDetail
 
 type SundryDetail struct {
-	Account string  `xml:"Account"`
+	Account int     `xml:"Account"`
 	Amount  Decimal `xml:"Amount"`
 	DebCre  Side    `xml:"DebCre"`
 	Ventil  int     `xml:"Ventil"`
