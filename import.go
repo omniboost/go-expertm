@@ -8,4 +8,5 @@ type Import struct {
 
 	Sales     Sales     `xml:"Sales>Sale"`
 	Customers Customers `xml:"Customers>Customer"`
+	Sundries  Sundries  `xml:"Sundries>Sundry"`
 }
