@@ -199,10 +199,6 @@ func (m *Month) UnmarshalJSON(data []byte) (err error) {
 type Decimal float64
 
 func (d Decimal) String() string {
-	if d == 0.0 {
-		return ""
-	}
-
 	return d.Round2()
 }
 
