@@ -3,11 +3,15 @@ package expertm
 type Sundries []Sundry
 
 type Sundry struct {
-	JournalPrime int           `xml:"Journal_Prime"`
-	DocNumber    string        `xml:"DocNumber"`
-	DocDate      Date          `xml:"DocDate"`
-	Status       int           `xml:"Status"`
-	Details      SundryDetails `xml:"Details>Detail"`
+	JournalPrime     int           `xml:"Journal_Prime"`              // Dagboek
+	DocNumber        string        `xml:"DocNumber"`                  // Documentnr.
+	DocDate          Date          `xml:"DocDate"`                    // Datum
+	YearAlfa         int           `xml:"Year_Alfa,omitempty"`        // Boekjaar
+	AccountingPeriod string        `xml:"AccountingPeriod,omitempty"` // Boekhoudperiode
+	VATMonth         Month         `xml:"VATMonth,omitempty"`         // Btw-periode
+	Status           int           `xml:"Status"`                     // Status
+	Annex            string        `xml:"Annex,omitempty"`            // Pad bijlage
+	Details          SundryDetails `xml:"Details>Detail"`
 }
 
 type SundryDetails []SundryDetail
