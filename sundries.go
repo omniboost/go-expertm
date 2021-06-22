@@ -17,9 +17,18 @@ type Sundry struct {
 type SundryDetails []SundryDetail
 
 type SundryDetail struct {
-	Account int     `xml:"Account"`
-	Amount  Decimal `xml:"Amount"`
-	DebCre  Side    `xml:"DebCre"`
-	Ventil  int     `xml:"Ventil"`
-	Ref     string  `xml:"Ref"`
+	Ventil        int     `xml:"Ventil"`                   // Ventilatie
+	Account       int     `xml:"Account,omitempty"`        // Grootboekrekening
+	Amount        Decimal `xml:"Amount"`                   // Bedrag document
+	AmountRef     Decimal `xml:"AmountRef"`                // Bedrag in referentiemunt
+	CurrencyCode  string  `xml:"CurrencyCode,omitempty"`   // Munt
+	CustomerPrime int     `xml:"Customer_Prime,omitempty"` // Klant
+	DebCre        Side    `xml:"DebCre"`                   // D/C
+	DocNumber     string  `xml:"DocNumber,omitempty"`      // Documentnr.
+	DocType       string  `xml:"DocType,omitempty"`        // Documenttype
+	Ref           string  `xml:"Ref,omitempty"`            // Referte
+	SupplierPrime int     `xml:"Supplier_Prime,omitempty"` // Leverancier
+	TypeDiv       string  `xml:"TypeDiv,omitempty"`        // Leverancier
+	Unit1         string  `xml:"Unit1,omitempty"`          // Eenheid1
+	Unit2         string  `xml:"Unit2,omitempty"`          // Eenheid2
 }
